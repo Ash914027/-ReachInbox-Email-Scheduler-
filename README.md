@@ -1,6 +1,12 @@
 # ReachInbox — Email Scheduler (starter)
 
 This repository contains a starter implementation for an email scheduler service using BullMQ, Redis, Postgres, Ethereal Email and a minimal Next.js frontend.
+<img width="1495" height="860" alt="Screenshot 2026-02-07 210041" src="https://github.com/user-attachments/assets/a5f5e2ea-ffec-483a-a7fc-73d29e2abfcd" />
+<img width="1608" height="818" alt="Screenshot 2026-02-07 210108" src="https://github.com/user-attachments/assets/6553041c-45bd-49c3-9f3e-9d8ef8a2b7d3" />
+<img width="1545" height="969" alt="Screenshot 2026-02-07 210122" src="https://github.com/user-attachments/assets/2222022a-2355-4662-a10b-c9e59dee7b2e" />
+
+
+
 
 Overview:
 - Backend: TypeScript + Express + TypeORM + BullMQ
@@ -53,3 +59,4 @@ Env notes:
 Design notes:
 - Rate limiting uses a Redis hourly counter keyed by sender+hour. `INCR` is atomic so it is safe across workers. When limit is exceeded, the worker re-schedules job to the next hour window.
 - Idempotency: Worker updates DB row from `scheduled` -> `processing` using an atomic update; if no rows affected the job is skipped. This prevents duplicate sends.
+
